@@ -737,6 +737,82 @@
       display: block;
     }
     .footer-col a:hover { color: var(--cream); }
+
+    /* ── HAMBURGER (hidden on desktop) ── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--blue);
+      border-radius: 2px;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 72px; left: 0; right: 0;
+        background: var(--cream);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px;
+        gap: 20px;
+        border-bottom: 1px solid rgba(0,14,170,0.08);
+        z-index: 199;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      }
+      .nav-links.open { display: flex; }
+
+      .hero { flex-direction: column; padding: 48px 20px 60px; min-height: auto; text-align: center; gap: 40px; }
+      .hero-text { max-width: 100%; }
+      .hero-text h1 { font-size: 48px; }
+      .hero-text p { font-size: 16px; max-width: 100%; }
+      .hero-buttons { justify-content: center; }
+      .video-circle { width: 240px; height: 240px; }
+
+      .bright-section { grid-template-columns: 1fr; padding: 60px 20px; gap: 48px; }
+      .bright-heading { font-size: 44px; }
+      .bright-stats { gap: 16px; flex-wrap: wrap; }
+      .stat-number { font-size: 48px; }
+      .bright-media-wrap { height: 300px; }
+
+      .planet-section { padding: 0 20px 60px; }
+      .planet-heading { font-size: 44px; }
+      .slider-wrap { aspect-ratio: 4 / 3; }
+
+      .dyes-section { padding: 60px 20px; }
+      .dyes-heading { font-size: 44px; }
+      .dyes-features { grid-template-columns: 1fr; gap: 32px; }
+      .dye-feature .big-number { font-size: 52px; }
+      .dyes-cards { grid-template-columns: 1fr; }
+      .dye-card img { height: 240px; }
+
+      .news-section { padding: 48px 20px 56px; }
+      .news-cards { grid-template-columns: 1fr; }
+
+      .team-section { padding: 60px 20px 80px; }
+      .team-section h2 { font-size: 36px; }
+      .team-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 100%; }
+
+      .contact-section { padding: 60px 20px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 36px; }
+      .contact-left h2 { font-size: 40px; }
+      .form-row { grid-template-columns: 1fr; }
+
+      .footer-bar { grid-template-columns: 1fr; padding: 40px 20px; gap: 28px; }
+    }
   </style>
 </head>
 <body>
@@ -746,7 +822,10 @@
     <div class="nav-logo">
       <img src="brand_assets/Logo.svg" alt="brilliant dyes">
     </div>
-    <ul class="nav-links">
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
       <li><a href="samples.html">samples</a></li>
       <li><a href="science.html">science</a></li>
       <li><a href="#team">team</a></li>
@@ -1242,5 +1321,11 @@
     });
   </script>
 
+  <script>
+    const navHamburger = document.getElementById('navHamburger');
+    const navLinks = document.getElementById('navLinks');
+    navHamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  </script>
 </body>
 </html>
