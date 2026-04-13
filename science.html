@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Science — Brilliant Dyes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --blue: #000EAA;
+      --orange: #F58C60;
+      --cream: #FFFDEC;
+      --dark: #2D2D2A;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; }
+    h1, h2, h3, h4, h5, h6 { font-weight: 400; }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: opacity 0.2s ease, transform 0.15s ease;
+    }
+    .btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+    .btn-orange { background: var(--orange); color: white; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 60px;
+      height: 72px;
+      border-bottom: 1px solid rgba(0, 14, 170, 0.08);
+    }
+
+    .nav-logo img { height: 44px; width: auto; display: block; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--blue);
+      font-size: 15px;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    .nav-links a:hover { opacity: 0.65; }
+    .nav-links a.active {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-thickness: 1.5px;
+      text-decoration-color: rgba(0, 14, 170, 0.45);
+    }
+
+    /* ── HERO ── */
+    .hero-wrap {
+      padding: 24px 60px 0;
+    }
+
+    .hero-image-box {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      width: 100%;
+      aspect-ratio: 16 / 8;
+    }
+
+    .hero-image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(145deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.10) 55%, transparent 100%);
+    }
+
+    .hero-label {
+      position: absolute;
+      top: 36px;
+      left: 40px;
+      color: #fff;
+      font-size: 42px;
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+    }
+
+    /* ── INTRO BLOCK ── */
+    .intro-block {
+      padding: 60px 60px 0;
+      text-align: center;
+    }
+
+    .algae-frame-wrap {
+      width: 640px;
+      height: 300px;
+      margin: 0 auto 20px;
+      overflow: hidden;
+    }
+
+    .algae-frame-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      pointer-events: none;
+    }
+
+    .intro-headline {
+      font-size: 36px;
+      font-weight: 400;
+      color: var(--dark);
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── ALL IN ONE SECTION ── */
+    .all-in-one-section {
+      padding: 80px 60px 72px;
+      text-align: center;
+    }
+
+    .all-in-one-title {
+      font-size: 38px;
+      font-weight: 400;
+      color: var(--dark);
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 36px;
+      height: 2px;
+      background: var(--orange);
+      border-radius: 2px;
+      margin: 36px auto 36px;
+      opacity: 0.6;
+    }
+
+    /* ── PROCESS STEPS ── */
+    .process-section {
+      padding: 0 60px 100px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .step-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 100px;
+    }
+
+    .step-text {
+      margin-bottom: 36px;
+    }
+
+    .step-title {
+      font-size: 30px;
+      font-weight: 400;
+      color: var(--dark);
+      letter-spacing: -0.025em;
+      margin-bottom: 12px;
+      line-height: 1.15;
+    }
+
+    .step-desc {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--dark);
+      line-height: 1.65;
+    }
+
+    .step-anim-wrap {
+      width: 340px;
+      height: 340px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  opacity 0.2s ease;
+    }
+
+    .step-anim-wrap:hover {
+      transform: scale(1.06);
+      opacity: 0.85;
+    }
+
+    .step-anim-wrap:active {
+      transform: scale(0.97);
+      transition: transform 0.1s ease;
+    }
+
+    .step-anim-wrap.cultivate-wrap {
+      width: 510px;
+      height: 510px;
+    }
+
+    .step-anim-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      pointer-events: none;
+      background: transparent;
+    }
+
+    /* ── IN NUMBERS SECTION ── */
+    .in-numbers-section {
+      padding: 0 60px 80px;
+    }
+
+    .in-numbers-title {
+      font-size: 38px;
+      font-weight: 400;
+      color: var(--dark);
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .data-image-wrap {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .data-image-wrap img {
+      width: 100%;
+      display: block;
+    }
+
+    .data-stats-overlay {
+      position: absolute;
+      left: 0;
+      right: 0;
+      /* frosted panel: 104px from bottom, 353px from bottom (image height 565px) */
+      bottom: calc(104 / 565 * 100%);
+      height: calc(249 / 565 * 100%);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0 48px;
+    }
+
+    .data-stat {
+      text-align: center;
+      flex: 1;
+    }
+
+    .data-stat-number {
+      font-size: 52px;
+      font-weight: 400;
+      color: #FFFDEC;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .data-stat-label {
+      font-size: 13px;
+      font-weight: 400;
+      color: #FFFDEC;
+      line-height: 1.4;
+      opacity: 0.85;
+    }
+
+    /* ── COMPARISON SUBTITLE ── */
+    .comparison-subtitle {
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--dark);
+      letter-spacing: -0.015em;
+      line-height: 1.3;
+      text-align: center;
+      margin: 60px 0 32px;
+    }
+
+    /* ── CONTACT SECTION ── */
+    .contact-section {
+      background: var(--blue);
+      padding: 96px 60px 80px;
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-left h2 {
+      font-size: 56px;
+      font-weight: 400;
+      color: var(--cream);
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 28px;
+    }
+
+    .contact-left p {
+      font-size: 15px;
+      color: rgba(255, 253, 236, 0.75);
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1.5px solid rgba(255, 253, 236, 0.25);
+      background: rgba(255, 253, 236, 0.07);
+      color: var(--cream);
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: rgba(255, 253, 236, 0.38);
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: rgba(255, 253, 236, 0.65);
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .btn-send {
+      align-self: flex-start;
+      background: var(--cream);
+      color: var(--blue);
+      border: none;
+      padding: 12px 32px;
+      border-radius: 50px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.2s ease, transform 0.15s ease;
+    }
+    .btn-send:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-send:active { transform: translateY(0); }
+
+    /* ── FOOTER BAR ── */
+    .footer-bar {
+      background: var(--blue);
+      border-top: 1px solid rgba(255, 253, 236, 0.12);
+      padding: 40px 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-logo img {
+      height: 36px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+
+    .footer-col-heading {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .footer-col a,
+    .footer-col p {
+      font-size: 13px;
+      color: rgba(255, 253, 236, 0.65);
+      display: block;
+      line-height: 1.8;
+    }
+
+    .footer-col a:hover { color: var(--cream); }
+  </style>
+</head>
+<body>
+
+  <div class="page-wrap">
+
+    <!-- ── NAV ── -->
+    <nav>
+      <div class="nav-logo">
+        <a href="index.html"><img src="brand_assets/Logo.svg" alt="brilliant dyes"></a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="samples.html">samples</a></li>
+        <li><a href="science.html" class="active">science</a></li>
+        <li><a href="index.html#team">team</a></li>
+        <li><a href="news.html">news</a></li>
+        <li><a href="index.html#contact" class="btn btn-orange">Collaborate</a></li>
+      </ul>
+    </nav>
+
+    <!-- ── HERO ── -->
+    <div class="hero-wrap">
+      <div class="hero-image-box">
+        <img src="brand_assets/Content/footage/Redwan_Mixing_blue%202.png" alt="Scientist mixing algae dyes">
+        <div class="hero-overlay"></div>
+        <h1 class="hero-label">Our<br>science</h1>
+      </div>
+    </div>
+
+    <!-- ── INTRO BLOCK: algae animation + headline ── -->
+    <div class="intro-block">
+      <div class="algae-frame-wrap" data-observe-iframe>
+        <iframe src="algae_moving.html" scrolling="no" title="Algae animation"></iframe>
+      </div>
+      <h2 class="intro-headline">Turning carbon-capturing Algae biomass into valuable bioactive dyes.</h2>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ── ALL IN ONE SECTION ── -->
+    <div class="all-in-one-section">
+      <h2 class="all-in-one-title">All in one solution for textiles</h2>
+    </div>
+
+    <!-- ── 4-STEP PROCESS ── -->
+    <div class="process-section">
+
+      <div class="step-row">
+        <div class="step-text">
+          <div class="step-title">1. Cultivate</div>
+          <p class="step-desc">Micro algae is grown at high efficiency in our bioreactors</p>
+        </div>
+        <div class="step-anim-wrap cultivate-wrap" data-observe-iframe data-clickable>
+          <iframe src="Cultivate.html" scrolling="no" title="Cultivate"></iframe>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="step-text">
+          <div class="step-title">2. Extract</div>
+          <p class="step-desc">Algae Cell walls are split &amp; solvents help us extract the dyes</p>
+        </div>
+        <div class="step-anim-wrap" data-observe-iframe data-clickable>
+          <iframe src="Extract.html" scrolling="no" title="Extract"></iframe>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="step-text">
+          <div class="step-title">3. Purify</div>
+          <p class="step-desc">Advanced purification &amp; quality control</p>
+        </div>
+        <div class="step-anim-wrap" data-observe-iframe data-clickable>
+          <iframe src="Purify.html" scrolling="no" title="Purify"></iframe>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="step-text">
+          <div class="step-title">4. Dye</div>
+          <p class="step-desc">Novel Dye fixing in development</p>
+        </div>
+        <div class="step-anim-wrap" data-observe-iframe data-clickable>
+          <iframe src="dye.html" scrolling="no" title="Dye"></iframe>
+        </div>
+      </div>
+
+    </div>
+
+  </div><!-- end .page-wrap -->
+
+  <!-- ── IN NUMBERS ── -->
+  <section class="in-numbers-section">
+    <h2 class="in-numbers-title">In numbers</h2>
+
+    <!-- General data image -->
+    <div class="data-image-wrap">
+      <img src="brand_assets/Content/footage/Data_Dyes_General.png" alt="Brilliant Dyes data">
+      <div class="data-stats-overlay">
+        <div class="data-stat">
+          <div class="data-stat-number" data-target="100" data-suffix="%">100%</div>
+          <div class="data-stat-label">biodegradable</div>
+        </div>
+        <div class="data-stat">
+          <div class="data-stat-number" data-target="0" data-suffix="%" data-direction="down" data-from="100">0%</div>
+          <div class="data-stat-label">waste generation</div>
+        </div>
+        <div class="data-stat">
+          <div class="data-stat-number" data-target="10" data-prefix="&gt;" data-suffix="t">&gt;10t</div>
+          <div class="data-stat-label">CO₂ fixed / t dye produced</div>
+        </div>
+        <div class="data-stat">
+          <div class="data-stat-number" data-target="80" data-prefix="&gt;" data-suffix="%">&gt;80%</div>
+          <div class="data-stat-label">profit margin</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comparison subtitle + image -->
+    <p class="comparison-subtitle">Superior performance compared to traditional dyes:</p>
+
+    <div class="data-image-wrap">
+      <img src="brand_assets/Content/footage/Data_Dyes_Comparison.png" alt="Dye comparison data">
+      <div class="data-stats-overlay">
+        <div class="data-stat">
+          <div class="data-stat-number" data-target="90" data-suffix="%">90%</div>
+          <div class="data-stat-label">less water</div>
+        </div>
+        <div class="data-stat">
+          <div class="data-stat-number" data-target="75" data-suffix="%">75%</div>
+          <div class="data-stat-label">less energy</div>
+        </div>
+        <div class="data-stat">
+          <div class="data-stat-number" data-target="70" data-suffix="%">70%</div>
+          <div class="data-stat-label">lower carbon footprint</div>
+        </div>
+        <div class="data-stat">
+          <div class="data-stat-number" data-target="40" data-suffix="%">40%</div>
+          <div class="data-stat-label">less costs</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section class="contact-section" id="contact">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <h2>Contact Us</h2>
+        <p>Interested in working together? Want to request a sample?</p>
+        <p>Fill out some info and we will be in touch shortly. We can't wait to hear from you!</p>
+      </div>
+      <form class="contact-form" action="#" method="POST">
+        <div>
+          <div class="form-row">
+            <div class="form-field">
+              <input type="text" name="first_name" placeholder="First Name (required)" required>
+            </div>
+            <div class="form-field">
+              <input type="text" name="last_name" placeholder="Last Name (required)" required>
+            </div>
+          </div>
+        </div>
+        <div class="form-field">
+          <input type="email" name="email" placeholder="Email (required)" required>
+        </div>
+        <div class="form-field">
+          <textarea name="message" placeholder="Message (required)" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn-send">Send</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer-bar">
+    <div class="footer-logo">
+      <img src="brand_assets/Logo.svg" alt="Brilliant Dyes">
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-heading">Location</div>
+      <p>Scale Space</p>
+      <p>58 Wood Lane</p>
+      <p>W12 7RZ</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-heading">Contact</div>
+      <a href="mailto:hello@brilliantdyes.com">hello@brilliantdyes.com</a>
+    </div>
+  </footer>
+
+  <script>
+    // ── COUNT-UP ANIMATION ──
+    const animatedWrap = new Set();
+
+    function animateCount(el) {
+      const target    = parseInt(el.dataset.target, 10);
+      const prefix    = el.dataset.prefix  || '';
+      const suffix    = el.dataset.suffix  || '';
+      const direction = el.dataset.direction || 'up';
+      const from      = direction === 'down' ? parseInt(el.dataset.from || '100', 10) : 0;
+      const duration  = 1400;
+      const startTime = performance.now();
+
+      function tick(now) {
+        const elapsed  = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased    = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+        const current  = direction === 'down'
+          ? Math.round(from - eased * (from - target))
+          : Math.round(eased * (target - from));
+        el.textContent = prefix + current + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+
+      requestAnimationFrame(tick);
+    }
+
+    const countObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !animatedWrap.has(entry.target)) {
+          animatedWrap.add(entry.target);
+          entry.target.querySelectorAll('[data-target]').forEach(el => animateCount(el));
+        }
+      });
+    }, { threshold: 0.4 });
+
+    document.querySelectorAll('.data-image-wrap').forEach(el => countObserver.observe(el));
+
+    // ── IFRAME REPLAY ──
+    // Scroll-triggered replay for ALL iframes
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const iframe = entry.target.querySelector('iframe') || entry.target;
+          iframe.src = iframe.src;
+        }
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('[data-observe-iframe]').forEach(el => observer.observe(el));
+
+    // Click to replay step animations
+    document.querySelectorAll('[data-clickable]').forEach(wrap => {
+      wrap.addEventListener('click', () => {
+        const iframe = wrap.querySelector('iframe');
+        iframe.src = iframe.src;
+      });
+    });
+  </script>
+
+</body>
+</html>
