@@ -226,7 +226,12 @@
 
     .bright-stats {
       display: flex;
-      gap: 52px;
+      gap: 0;
+      justify-content: space-between;
+    }
+
+    .stat-item {
+      flex: 1;
     }
 
     .stat-number {
@@ -784,7 +789,9 @@
 
       .bright-section { grid-template-columns: 1fr; padding: 60px 20px; gap: 48px; }
       .bright-heading { font-size: 44px; }
-      .bright-stats { gap: 16px; flex-wrap: wrap; }
+      .bright-stats { flex-wrap: nowrap; }
+      .stat-number { font-size: 36px; }
+      .stat-label { font-size: 13px; max-width: none; }
       .stat-number { font-size: 48px; }
       .bright-media-wrap { height: 300px; }
 
